@@ -27,11 +27,13 @@ const ImageList = ({ images }) => {
     <div>
       <div className="container">
         {imagesToDisplay.map((image) => (
-          <img src={image.urls.small} alt={image.alt_description}
+          <img src={image.src.original} alt={image.alt_description}
             className="main"
             key={image.id}
           />
+          
         ))}
+
       </div>
 
       <div className="pagination">

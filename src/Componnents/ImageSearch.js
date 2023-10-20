@@ -1,57 +1,43 @@
-import React, { useState , useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import './ImageSearch.css'
-import Banner from '../Assets/imagexelsBanner.jpg'
+import "./ImageSearch.css";
+import Banner from "../Assets/imagexelsBanner.jpg";
 
-const ImageSearch = ({setImages}) => {
-    const [searchTerm,setSearchTerm]=useState('');
-   
+const ImageSearch = ({ setImages }) => {
+    const [searchTerm, setSearchTerm] = useState("");
 
-    // function implementSearch(){
-    //     axios.get("",{
-    //         params:{
-    //             query:searchTerm
-    //         },
-    //         headers:{
-    //             Authorization:""
-    //         }
-    //     })
-    //     .then(response => console.log("Success",response.data.results))
-    //     .catch(err =>console.log(err))
-
-    // }
-
-    useEffect(()=>{
-        implementSearch()
-    },[])
+    useEffect(() => {
+        implementSearch();
+    }, []);
     //async and await
-     async function implementSearch(){
-        try{
-        const response =await axios.get("https://api.unsplash.com/search/photos",{
-            params:{
-                query:searchTerm || "random",
-                per_page:100,
-            },
-            headers:{
-                Authorization:"Client-ID ysmiKdAp1kSvV86yR2-0sKpQ0KioFaii1YDesSRFlZI"
-            }
-        })
-        setImages(response.data.results);
+    async function implementSearch() {
+        try {
+            const response = await axios.get("https://api.pexels.com/v1/search", {
+                params: {
+                    query: searchTerm || "random",
+                    per_page: 50,
+                },
+                headers: {
+                    Authorization:
+                        "oIPXhxiG6Wc1wGywhJyZqCxpV6G7OUFgN8TtCNLH6L9kYSza5Su63qLb",
+                },
+            });
+            setImages(response.data.photos);
+        } catch (err) {
+            console.log(err);
+        }
     }
-    catch(err){
-        console.log(err);
-    }
-
-    }
-  return (
-    <div>
-        <img src={Banner} alt='' className='img'/>
-        <input type='text' placeholder='Enter something...'
-        onChange={e => setSearchTerm(e.target.value)}
-        />
-        <button onClick={implementSearch}>Search</button>
-    </div>
-  )
-}
+    return (
+        <div>
+            <img src={Banner} alt="" className="img" />
+            <input
+                type="text"
+                placeholder="Enter something..."
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button onClick={implementSearch}>Search</button>
+        </div>
+    );
+};
 
 export default ImageSearch;

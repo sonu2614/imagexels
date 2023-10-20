@@ -27,7 +27,7 @@ const ImageList = ({ images }) => {
     <div>
       <div className="container">
         {imagesToDisplay.map((image) => (
-          <img src={image.src.original} alt={image.alt_description}
+          <img src={image.src.medium} alt={image.alt_description}
             className="main"
             key={image.id}
           />

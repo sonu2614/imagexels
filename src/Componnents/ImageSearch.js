@@ -12,6 +12,7 @@ const ImageSearch = ({ setImages }) => {
     //async and await
     async function implementSearch() {
         try {
+            //api call
             const response = await axios.get("https://api.pexels.com/v1/search", {
                 params: {
                     query: searchTerm || "random",
@@ -29,12 +30,15 @@ const ImageSearch = ({ setImages }) => {
     }
     return (
         <div>
+            //banner
             <img src={Banner} alt="" className="img" />
+            //taking input for search
             <input
                 type="text"
                 placeholder="Enter something..."
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
+            //search button
             <button onClick={implementSearch}>Search</button>
         </div>
     );

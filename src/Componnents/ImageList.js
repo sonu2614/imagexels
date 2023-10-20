@@ -41,7 +41,7 @@ const ImageList = ({ images }) => {
         <button onClick={handlePrevPage} disabled={currentPage === 1}>
           Previous Page</button>
 
-        <span>Page {currentPage}</span>
+        <span style={{color:'white'}}>Page {currentPage}</span>
 
         <button
           onClick={handleNextPage}

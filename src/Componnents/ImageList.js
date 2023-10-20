@@ -20,7 +20,7 @@ const ImageList = ({ images }) => {
     }
   };
 
-  //logic for images load in per pages
+  // logic for images load in per pages
   const startIndex = (currentPage - 1) * perPageItems;
   const endIndex = startIndex + perPageItems;
 
@@ -28,7 +28,7 @@ const ImageList = ({ images }) => {
 
   return (
     <div>
-      //image display
+      {/* image display */}
       <div className="container">
         {imagesToDisplay.map((image) => (
           <img src={image.src.medium} alt={image.alt_description}
@@ -41,12 +41,13 @@ const ImageList = ({ images }) => {
       </div>
 
       <div className="btn">
-
+        {/* Previous Button */}
         <button onClick={handlePrev} disabled={currentPage === 1}>
           Previous Page</button>
 
         <span style={{color:'white'}}>Page {currentPage}</span>
 
+        {/* Next Button */}
         <button
           onClick={handleNext}
           disabled={currentPage === allPages || endIndex >= images.length}
